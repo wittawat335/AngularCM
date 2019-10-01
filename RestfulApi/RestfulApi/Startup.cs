@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
 
 namespace RestfulApi
 {
@@ -25,7 +26,19 @@ namespace RestfulApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                 .AddJsonOptions(options =>
+                 {
+                     var resolver = options.SerializerSettings.ContractResolver;
+                     if (resolver != null)
+                         (resolver as DefaultContractResolver).NamingStrategy = null;
+                 })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
+   //         services.AddDbContext<AuthenticationContext>(options =>
+   //options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

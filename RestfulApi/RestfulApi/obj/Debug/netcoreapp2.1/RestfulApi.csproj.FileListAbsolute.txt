@@ -1,0 +1,16 @@
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\appsettings.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.deps.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.runtimeconfig.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.runtimeconfig.dev.json
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.dll
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.csprojAssemblyReference.cache
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorAssemblyInfo.cache
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorAssemblyInfo.cs
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.AssemblyInfoInputs.cache
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.AssemblyInfo.cs
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorTargetAssemblyInfo.cache
+D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.pdb
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.dll
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.pdb
