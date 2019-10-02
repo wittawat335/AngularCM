@@ -5,7 +5,6 @@ D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.deps.j
 D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.runtimeconfig.json
 D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.runtimeconfig.dev.json
 D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.dll
-D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.csprojAssemblyReference.cache
 D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorAssemblyInfo.cache
 D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorAssemblyInfo.cs
 D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.AssemblyInfoInputs.cache
