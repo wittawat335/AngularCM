@@ -20,6 +20,20 @@ namespace RestfulApi.Controllers
             _context = context;
         }
 
+        [HttpGet("count/out_of_stock")]
+        public IActionResult GetOutOfStock()
+        {
+            try
+            {
+                var count = _context.Products.Where(p => p.Stock == 0).Count();
+                return Ok(new { out_of_stock_product = count, message = "request successfully" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
+        }
+
         // GET: api/Product
         [HttpGet]
         public IEnumerable<Products> GetProducts()

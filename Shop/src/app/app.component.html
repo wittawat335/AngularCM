@@ -1,0 +1,14 @@
+<div *ngIf="restApiService.isLoggedIn();then shop; else login"></div>
+
+<ng-template #shop>
+  <app-header></app-header>
+  <app-menu></app-menu>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</ng-template>
+
+<ng-template #login>
+  <router-outlet></router-outlet>
+</ng-template>
+
+

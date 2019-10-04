@@ -13,3 +13,4 @@ D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.RazorT
 D:\Git\AngularCM\RestfulApi\RestfulApi\bin\Debug\netcoreapp2.1\RestfulApi.pdb
 D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.dll
 D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.pdb
+D:\Git\AngularCM\RestfulApi\RestfulApi\obj\Debug\netcoreapp2.1\RestfulApi.csprojAssemblyReference.cache

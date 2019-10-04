@@ -83,20 +83,13 @@ namespace RestfulApi.Models
             {
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Password).IsRequired();
 
-                entity.Property(e => e.Position)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Position).HasMaxLength(50);
 
                 entity.Property(e => e.Username)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasMaxLength(50);
             });
         }
     }
