@@ -1,4 +1,4 @@
-<!-- <div class="content-wrapper">
+<div class="content-wrapper">
     <section class="content" style="max-width: 80%;">
       <div class="row" style="margin-top: 50px;">
         <div class="col-xs-12">
@@ -7,17 +7,17 @@
               <div class="box-header" style="margin-top:30px">
                 <div style="margin-left:5%">
                   <img src="assets/images/ic_detail_title.png" style="width:25px;height:25px">
-                  <strong style="margin-left:5px">Product ID: {{mProduct.product_id}}</strong>
+                  <strong style="margin-left:5px">Product ID: {{mProduct.ProductId}}</strong>
                 </div>
               </div>
               <div class="box-body" style="margin-top:20px">
                 <form class="form-horizontal">
-                  <input [(ngModel)]="mProduct.image" type="hidden" name="image">
+                  <input [(ngModel)]="mProduct.Image" type="hidden" name="image">
 
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                      <input [(ngModel)]="mProduct.name" class="form-control" type="text" name="name" data-val="true"
+                      <input [(ngModel)]="mProduct.Name" class="form-control" type="text" name="name" data-val="true"
                         data-val-required="The Name field is required.">
                     </div>
                   </div>
@@ -26,7 +26,7 @@
                     <label class="col-sm-2 control-label">Stock</label>
                     <div class="col-sm-10">
                       <div class="input-group box-body" style="padding-left:0;padding-top:0;">
-                        <input [(ngModel)]="mProduct.stock" class="form-control" type="number" name="stock">
+                        <input [(ngModel)]="mProduct.Stock" class="form-control" type="number" name="stock">
                         <span class="input-group-addon input-group-addon_custom">PCS.</span>
                       </div>
                     </div>
@@ -36,7 +36,7 @@
                     <label class="col-sm-2 control-label">Price</label>
                     <div class="col-sm-10">
                       <div class="input-group">
-                        <input [(ngModel)]="mProduct.price" class="form-control" type="number" name="price">
+                        <input [(ngModel)]="mProduct.Price" class="form-control" type="number" name="price">
                         <span class="input-group-addon input-group-addon_custom">฿</span>
                       </div>
                     </div>
@@ -46,8 +46,8 @@
                     <label class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-10">
                       <div class="input-group">
-                        <img *ngIf="mProduct.image === '' && imageSrc === ''" src="assets/images/no_photo.jpg" style="height: 200px"/>
-                        <img *ngIf="mProduct.image !== '' && imageSrc === null" [src]="mProduct.image | imageSecure | async" style="height: 200px">
+                        <img *ngIf="mProduct.Image === '' && imageSrc === ''" src="assets/images/no_photo.jpg" style="height: 200px"/>
+                        <img *ngIf="mProduct.image !== '' && imageSrc === null" [src]="mProduct.Image | imageSecure | async" style="height: 200px">
                         <img *ngIf="imageSrc !== ''" src="{{imageSrc}}" style="height: 200px">
                       </div>
                     </div>
@@ -78,4 +78,4 @@
         </div>
       </div>
     </section>
-  </div> -->
+  </div>

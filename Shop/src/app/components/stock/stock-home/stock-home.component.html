@@ -80,8 +80,8 @@
                 <td>{{item.ProductId}}</td>
                 <td>
                   <div class="image_product_list_item">
-                    <!-- <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg">
-                    <img *ngIf="item.image !== ''" [src]="item.image | imageSecure | async" /> -->
+                    <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg">
+                    <img *ngIf="item.image !== ''" [src]="item.Image | imageSecure | async" />
                   </div>
   
                   <strong class="product_name">{{item.Name}}</strong>
@@ -89,8 +89,8 @@
                 <td>฿ {{item.Price}}</td>
                 <td>{{item.Stock}} PCS.</td>
                 <td>
-                  <img src="assets/images/ic_edit.png" class="edit_product" (click)="onEditProduct(item.product_id)">
-                  <img src="assets/images/ic_delete.png" (click)="onDeleteProduct(item)" class="delete_product">
+                  <img src="assets/images/ic_edit.png" class="edit_product" (click)="onEditProduct(item.ProductId)">
+                  <img src="assets/images/ic_delete.png" (click)="onDeleteProduct(item.ProductId)" class="delete_product">
                 </td>
               </tr>
             </tbody>

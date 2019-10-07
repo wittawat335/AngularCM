@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { ImagePipe } from './pipe/image.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     StockEditComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    ImagePipe
   ],
   imports: [
     BrowserModule,

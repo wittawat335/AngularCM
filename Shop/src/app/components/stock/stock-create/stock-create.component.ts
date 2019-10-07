@@ -50,8 +50,8 @@ export class StockCreateComponent implements OnInit {
       reader.readAsDataURL(metaImage);
       reader.onload = () => {
         this.imageSrc = reader.result;
-        this.mProduct.image = metaImage;
-        console.log(this.mProduct.image);
+        this.mProduct.Image = metaImage;
+        console.log(this.mProduct.Image);
       };
     }
   }

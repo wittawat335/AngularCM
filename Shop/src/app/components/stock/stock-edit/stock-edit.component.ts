@@ -20,60 +20,60 @@ export class StockEditComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-    // this.activatedRoute.params.subscribe(
-    //   params => {
-    //     console.log(params.id);
-    //     this.feedData(params.id);
-    //   },
-    //   error => {
-    //     alert(error.toString());
-    //   }
-    // );
+    this.activatedRoute.params.subscribe(
+      params => {
+        console.log(params.id);
+        this.feedData(params.id);
+      },
+      error => {
+        alert(error.toString());
+      }
+    );
   }
 
-  // feedData(id: any) {
-  //   this.restService.getProduct(id).subscribe(
-  //     data => {
-  //       // console.log(data.result);
-  //       this.mProduct = data.result;
-  //     },
-  //     error => {
-  //       console.log(JSON.stringify(error));
-  //     }
-  //   );
-  // }
+  feedData(id: any) {
+    this.restService.getProduct(id).subscribe(
+      data => {
+        // console.log(data.result);
+        this.mProduct = data.result;
+      },
+      error => {
+        console.log(JSON.stringify(error));
+      }
+    );
+  }
 
-  // submit() {
-  //   console.log(JSON.stringify(this.mProduct));
+  submit() {
+    console.log(JSON.stringify(this.mProduct));
 
-  //   this.restService
-  //     .editProduct(this.mProduct.productId, this.mProduct, )
-  //     .subscribe(
-  //       data => {
-  //         alert(data.message);
+    this.restService
+      .editProduct(this.mProduct.ProductId, this.mProduct, )
+      .subscribe(
+        data => {
+          alert(data.message);
 
-  //         this.mIsSubmitted = true;
-  //         this.location.back();
-  //       }
-  //     );
-  // }
+          this.mIsSubmitted = true;
+          this.location.back();
+        }
+      );
+  }
 
-  // cancel() {
-  //   this.location.back();
-  // }
+  cancel() {
+    this.location.back();
+  }
 
-  // onUploadImage(event) {
-  //   const metaImage = event.target.files[0];
+  onUploadImage(event) {
+    const metaImage = event.target.files[0];
 
-  //   if (metaImage) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(metaImage);
-  //     reader.onload = () => {
-  //       this.imageSrc = reader.result;
-  //       this.mProduct.image = metaImage;
-  //       console.log(this.mProduct.image);
-  //     };
-  //   }
-  // }
+    if (metaImage) {
+      const reader = new FileReader();
+      reader.readAsDataURL(metaImage);
+      reader.onload = () => {
+        this.imageSrc = reader.result;
+        this.mProduct.Image = metaImage;
+        console.log(this.mProduct.Image);
+      };
+    }
+  }
 
 }

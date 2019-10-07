@@ -4,12 +4,12 @@ interface ProductResponse {
   }
 
 class Product {
-  productId: number;
-  name: string;
-  image: string;
-  stock: number;
-  price: number;
-  createDate: string;
+  ProductId: number;
+  Name: string;
+  Image: string;
+  Stock: number;
+  Price: number;
+  CreateDate: string;
   }
 
 interface ResponseProduct {

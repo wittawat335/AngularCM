@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -73,39 +74,62 @@ namespace RestfulApi.Controllers
             }
         }
 
-        // PUT: api/Product/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducts([FromRoute] int id, [FromBody] Products products)
+        [HttpGet("search/name")]
+        public IActionResult SearchProduct([FromQuery] string keyword)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != products.ProductId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(products).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                var result = (from product in _context.Products
+                              where EF.Functions.Like(product.Name, "%" + keyword + "%")
+                              select product).ToList();
 
-            return NoContent();
+                return Ok(new { result = result, message = "request successfully" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet("images/{name}")]
+        public IActionResult GetImage(String name)
+        {
+            return File($"~/images/{name}", "image/jpg");
+        }
+
+        // PUT: api/Product/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync([FromForm] Products model, int id)
+        {
+            try
+            {
+                var result = _context.Products.SingleOrDefault(x => x.ProductId == id);
+
+                if (result != null)
+                {
+                    string fileName = await UploadProductImages();
+
+                    if (!String.IsNullOrEmpty(fileName))
+                    {
+                        result.Image = fileName;
+                    }
+
+                    result.Name = model.Name;
+                    result.Price = model.Price;
+                    result.Stock = model.Stock;
+
+                    _context.Update(result);
+                    _context.SaveChanges();
+
+                    return Ok(new { result = "", message = "update product successfully" });
+                }
+                return NotFound();
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
         }
 
         // POST: api/Product
@@ -174,23 +198,26 @@ namespace RestfulApi.Controllers
 
         // DELETE: api/Product/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducts([FromRoute] int id)
+        public IActionResult Delete(int id)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
+                var item = _context.Products.SingleOrDefault(p => p.ProductId == id);
 
-            var products = await _context.Products.FindAsync(id);
-            if (products == null)
+                if (item == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Products.Remove(item);
+                _context.SaveChanges();
+
+                return Ok(new { result = "", message = "delete product sucessfully" });
+            }
+            catch (Exception error)
             {
-                return NotFound();
+                return StatusCode(500, new { result = "", message = error });
             }
-
-            _context.Products.Remove(products);
-            await _context.SaveChangesAsync();
-
-            return Ok(products);
         }
 
         private bool ProductsExists(int id)
