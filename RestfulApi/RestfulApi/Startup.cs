@@ -60,8 +60,7 @@ namespace RestfulApi
                 options.AddPolicy("AllowOriginsSpecific", builder =>
                 {
                     builder.WithOrigins(
-                     "http://localhost:4200",
-                     "https://www.w3schools.com")
+                     "http://localhost:4200")           
                      .AllowCredentials()
                      .AllowAnyHeader()
                      .AllowAnyMethod();
@@ -104,11 +103,12 @@ namespace RestfulApi
             }
 
             // add ใหม่
-            app.UseCors(builder => builder.WithOrigins(Configuration["Jwt:Client_URL"].ToString())
-               .AllowAnyHeader()
-               .AllowAnyMethod()); //
+            //app.UseCors(builder => builder.WithOrigins(Configuration["Jwt:Client_URL"].ToString())
+            //   .AllowAnyHeader()
+            //   .AllowAnyMethod()); //
 
             app.UseAuthentication();
+            app.UseStaticFiles();
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             app.UseHttpsRedirection();

@@ -20,40 +20,40 @@ export class StockCreateComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-    // this.mProduct = new ProductForm();
+    this.mProduct = new ProductForm();
   }
 
-  // submit() {
-  //   console.log(JSON.stringify(this.mProduct));
+  submit() {
+    console.log(JSON.stringify(this.mProduct));
 
-  //   this.service
-  //     .addProduct(this.mProduct)
-  //     .subscribe(
-  //       data => {
-  //         alert(data.message);
+    this.service
+      .addProduct(this.mProduct)
+      .subscribe(
+        data => {
+          alert(data.message);
 
-  //         this.mIsSubmitted = true;
-  //         this.location.back();
-  //       }
-  //     );
-  // }
+          this.mIsSubmitted = true;
+          this.location.back();
+        }
+      );
+  }
 
-  // cancel() {
-  //   this.location.back();
-  // }
+  cancel() {
+    this.location.back();
+  }
 
-  // onUploadImage(event) {
-  //   const metaImage = event.target.files[0];
+  onUploadImage(event) {
+    const metaImage = event.target.files[0];
 
-  //   if (metaImage) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(metaImage);
-  //     reader.onload = () => {
-  //       this.imageSrc = reader.result;
-  //       this.mProduct.image = metaImage;
-  //       console.log(this.mProduct.image);
-  //     };
-  //   }
-  // }
+    if (metaImage) {
+      const reader = new FileReader();
+      reader.readAsDataURL(metaImage);
+      reader.onload = () => {
+        this.imageSrc = reader.result;
+        this.mProduct.image = metaImage;
+        console.log(this.mProduct.image);
+      };
+    }
+  }
 
 }

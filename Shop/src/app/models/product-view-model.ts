@@ -5,6 +5,6 @@ export class ProductForm {
     stock: number;
     price: number;
     qty: number;
-    created: string;
+    createDate: string;
   }
 

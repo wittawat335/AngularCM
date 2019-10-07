@@ -68,16 +68,16 @@ export class RestApiService {
   //   return this.http.put<ResponseProduct>(`${this.productURL}/${id}`, this.makeFormData(formData));
   // }
 
-  // addProduct(formData): Observable<ResponseProduct> {
-  //   return this.http.post<ResponseProduct>(`${this.productURL}`, this.makeFormData(formData));
-  // }
-  // makeFormData(product: Product): FormData {
-  //   const formData = new FormData();
-  //   formData.append('name', product.name);
-  //   formData.append('price', product.price.toString());
-  //   formData.append('stock', product.stock.toString());
-  //   formData.append('upload_file', product.image);
-  //   return formData;
-  // }
+  addProduct(formData): Observable<ResponseProduct> {
+    return this.http.post<ResponseProduct>(`${this.productURL}`, this.makeFormData(formData));
+  }
+  makeFormData(product: Product): FormData {
+    const formData = new FormData();
+    formData.append('name', product.name);
+    formData.append('price', product.price.toString());
+    formData.append('stock', product.stock.toString());
+    formData.append('upload_file', product.image);
+    return formData;
+  }
 
 }
