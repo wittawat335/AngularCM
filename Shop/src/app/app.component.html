@@ -1,4 +1,5 @@
 <div *ngIf="restApiService.isLoggedIn();then shop; else login"></div>
+<!-- <div *ngIf="restApiService.checkToken();then shop; else login"></div> -->
 
 <ng-template #shop>
   <app-header></app-header>

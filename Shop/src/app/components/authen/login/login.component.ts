@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
   constructor(private restService: RestApiService, private router: Router) { }
 
   ngOnInit() {
-   
+    if (localStorage.getItem(environment.keyLocalAuthenInfo) != null) {
+      this.router.navigateByUrl('/stock');
+    }
   }
 
   onClickSubmit(loginForm) {

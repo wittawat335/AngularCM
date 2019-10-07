@@ -36,28 +36,37 @@ namespace RestfulApi.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public IEnumerable<Products> GetProducts()
+        public IActionResult GetProducts()
         {
-            return _context.Products;
+            try
+            {
+                var result = _context.Products.ToList();
+                return Ok(new { result = result, message = "request successfully" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
         }
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProducts([FromRoute] int id)
+        public IActionResult GetProduct(int id)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                var result = _context.Products.SingleOrDefault(p => p.ProductId == id);
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(new { result = result, message = "request successfully" });
             }
-
-            var products = await _context.Products.FindAsync(id);
-
-            if (products == null)
+            catch (Exception error)
             {
-                return NotFound();
+                return StatusCode(500, new { result = "", message = error });
             }
-
-            return Ok(products);
         }
 
         // PUT: api/Product/5

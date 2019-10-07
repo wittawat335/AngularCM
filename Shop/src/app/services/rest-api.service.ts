@@ -37,8 +37,47 @@ export class RestApiService {
     return authenInfo != null;
   }
 
+  getProducts(): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(this.productURL);
+  }
+
+  // getProductImage(name: string): Observable<Blob> {
+  //   return this.http.get(`${this.productImageURL}/${name}`, { responseType : 'blob'});
+  // }
+
   getOutOfStock(): Observable<ResponseOutOfStock> {
     return this.http.get<ResponseOutOfStock>(this.outOfStockURL);
   }
+
+  // deleteProduct(id: number): Observable<ResponseProduct> {
+  //   return this.http.delete<ResponseProduct>(`${this.productURL}/${id}`);
+  // }
+
+  // searchProducts(keyword: string): Observable<ProductResponse> {
+  //   return this.http.get<ProductResponse>(
+  //     `${this.productURL}/search/name?keyword=${keyword}`);
+  // }
+
+
+  // getProduct(id: number): Observable<ResponseProduct> {
+  //   return this.http.get<ResponseProduct>(`${this.productURL}/${id}`);
+  // }
+
+  // form data
+  // editProduct(id: number, formData): Observable<ResponseProduct> {
+  //   return this.http.put<ResponseProduct>(`${this.productURL}/${id}`, this.makeFormData(formData));
+  // }
+
+  // addProduct(formData): Observable<ResponseProduct> {
+  //   return this.http.post<ResponseProduct>(`${this.productURL}`, this.makeFormData(formData));
+  // }
+  // makeFormData(product: Product): FormData {
+  //   const formData = new FormData();
+  //   formData.append('name', product.name);
+  //   formData.append('price', product.price.toString());
+  //   formData.append('stock', product.stock.toString());
+  //   formData.append('upload_file', product.image);
+  //   return formData;
+  // }
 
 }
