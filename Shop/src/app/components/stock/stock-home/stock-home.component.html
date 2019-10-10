@@ -68,6 +68,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>IMAGE</th>
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>STOCK</th>
@@ -84,7 +85,10 @@
                     <img *ngIf="item.image !== ''" [src]="item.Image | imageSecure | async" />
                   </div>
   
+                </td>
+                <td>
                   <strong class="product_name">{{item.Name}}</strong>
+
                 </td>
                 <td>฿ {{item.Price}}</td>
                 <td>{{item.Stock}} PCS.</td>

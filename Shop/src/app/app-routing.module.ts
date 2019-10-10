@@ -7,6 +7,7 @@ import { StockHomeComponent } from './components/stock/stock-home/stock-home.com
 import { StockCreateComponent } from './components/stock/stock-create/stock-create.component';
 import { StockEditComponent } from './components/stock/stock-edit/stock-edit.component';
 import { CancelFormGuard } from './auth/cancel-form.guard';
+import { ShopHomeComponent } from './components/shop/shop-home/shop-home.component';
 
 const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'stock', component: StockHomeComponent , canActivate: [AuthGuard]},
   { path: 'stock/create', component: StockCreateComponent, canDeactivate: [CancelFormGuard] },
   { path: 'stock/:id', component: StockEditComponent, canDeactivate: [CancelFormGuard] },
-  // { path: 'shop', component: ShopHomeComponent,  canActivate: [AuthenGuard] },
+  { path: 'shop', component: ShopHomeComponent,  canActivate: [AuthGuard] },
   // { path: 'transaction', component: TransactionHomeComponent, canActivate: [AuthenGuard] },
   // { path: 'transaction/detail/:id', component: TransactionDetailComponent },
   // { path: 'report', component: ReportComponent },

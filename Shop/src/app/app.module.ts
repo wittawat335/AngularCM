@@ -15,6 +15,9 @@ import { MenuComponent } from './components/shared/menu/menu.component';
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ImagePipe } from './pipe/image.pipe';
+import { ShopHomeComponent } from './components/shop/shop-home/shop-home.component';
+import { ShopPayComponent } from './components/shop/shop-pay/shop-pay.component';
+import { CustomPipe } from './pipe/custom.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ImagePipe } from './pipe/image.pipe';
     HeaderComponent,
     MenuComponent,
     FooterComponent,
-    ImagePipe
+    ImagePipe,
+    ShopHomeComponent,
+    ShopPayComponent,
+    CustomPipe
   ],
   imports: [
     BrowserModule,
