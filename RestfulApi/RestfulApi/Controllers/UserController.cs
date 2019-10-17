@@ -139,11 +139,29 @@ namespace RestfulApi.Controllers
                 var result = _context.Users.SingleOrDefault(u => u.Username == model.Username);
                 if (result == null)
                 {
-                    return BadRequest(new { token = "", message = "username invalid" });
+                    return BadRequest(new { message = "username invalid" });
                 }
                 else if (Crypto.VerifyHashedPassword(result.Password, model.Password))
                 {
                     var token = BuildToken(result);
+
+                    //var tokenDescriptor = new SecurityTokenDescriptor
+                    //{
+                    //    Subject = new ClaimsIdentity(new Claim[]
+                    //    {
+                    //        new Claim("id",result.Id.ToString()),
+                    //         new Claim("username", result.Username),
+                    //  new Claim("position", result.Position),
+                    //        //new Claim(_options.ClaimsIdentity.RoleClaimType,role.FirstOrDefault())
+                    //    }),
+                    //    Expires = DateTime.UtcNow.AddMinutes(1),
+                    //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSetting.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
+                    //};
+
+                    //var tokenHandler = new JwtSecurityTokenHandler();
+                    //var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+                    //var token = tokenHandler.WriteToken(securityToken);
+
                     return Ok(new { token = token, message = "login successfully" });
                 }
 
@@ -168,7 +186,7 @@ namespace RestfulApi.Controllers
                 // new Claim(ClaimTypes.Role, user.Position)
             };
 
-            var expires = DateTime.UtcNow.AddDays(Convert.ToDouble(_appSetting.ExpireDay));
+            var expires = DateTime.Now.AddMinutes(Convert.ToDouble(_appSetting.ExpireDay));
 
             //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSetting.JWT_Secret));

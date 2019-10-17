@@ -40,7 +40,7 @@ export class JwtInterceptor implements HttpInterceptor {
         },
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
-            if (err.status === 403 || err.status === 500) {
+            if (err.status === 403 || err.status === 500 || err.status === 401) {
               // redirect to the login route or show a modal 'Token is not valid'
               localStorage.setItem(environment.keyLocalAuthenInfo, null);
               this.router.navigate(['/login']);

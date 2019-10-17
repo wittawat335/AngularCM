@@ -18,6 +18,8 @@ import { ImagePipe } from './pipe/image.pipe';
 import { ShopHomeComponent } from './components/shop/shop-home/shop-home.component';
 import { ShopPayComponent } from './components/shop/shop-pay/shop-pay.component';
 import { CustomPipe } from './pipe/custom.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,11 @@ import { CustomPipe } from './pipe/custom.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      progressBar: true
+    }) // ToastrModule added
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -41,6 +41,7 @@ namespace RestfulApi.Controllers
 
         // GET: api/Product
         [HttpGet]
+        [Authorize]
         public IActionResult GetProducts()
         {
             try
@@ -56,6 +57,7 @@ namespace RestfulApi.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult GetProduct(int id)
         {
             try
