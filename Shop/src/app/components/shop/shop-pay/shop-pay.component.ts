@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import Swal from 'sweetalert2';
+import { Transaction } from 'src/app/models/transaction';
 
 @Component({
   selector: 'app-shop-pay',
@@ -13,6 +14,7 @@ export class ShopPayComponent implements OnInit {
   @Input() orderPayment: String;
   @Input() totalPayment: number;
   @Output() paymentSccuess = new EventEmitter<void>();
+  @Output() submitPayments = new EventEmitter<void>();
 
   givenNumber = '0.00';
 
@@ -58,32 +60,32 @@ export class ShopPayComponent implements OnInit {
     this.paymentSccuess.emit();
     console.log(this.orderPayment);
 
-    // const transaction = new Transaction();
-    // transaction.total = this.totalPayment;
-    // transaction.paid = Number(this.givenNumber);
-    // transaction.change = Number(this.givenNumber) - this.totalPayment;
-    // transaction.paymentType = 'cash';
-    // transaction.paymentDetail = 'full';
-    // transaction.sellerId = 'sr0001';
-    // transaction.buyerId = 'by0000';
-    // transaction.orderList = JSON.stringify(this.orderPayment);
+    const transaction = new Transaction();
+    transaction.total = this.totalPayment;
+    transaction.paid = Number(this.givenNumber);
+    transaction.change = Number(this.givenNumber) - this.totalPayment;
+    transaction.paymentType = 'cash';
+    transaction.paymentDetail = 'full';
+    transaction.sellerId = 'sr0001';
+    transaction.buyerId = 'by0000';
+    transaction.orderList = JSON.stringify(this.orderPayment);
 
-    // this.restService.addTransaction(transaction).subscribe(
-    //   data => {
-    //     this.submitPayments.emit(); // emit event of shop.component.html
-    //     Swal.fire({
-    //       position: 'center',
-    //       type: 'success',
-    //       title: data.message,
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     });
-    //   },
-    //   error => {
-    //     console.log(JSON.stringify(error));
-    //     alert(error.error.message);
-    //   }
-    // );
+    this.restService.addTransaction(transaction).subscribe(
+      data => {
+        this.submitPayments.emit(); // emit event of shop.component.html
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          //title: data.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      error => {
+        console.log(JSON.stringify(error));
+        alert(error.error.message);
+      }
+    );
   }
 
 }

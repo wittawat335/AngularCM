@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Login } from '../models/login';
 import { Register } from '../models/register';
 import { environment } from 'src/environments/environment';
+import { Transaction } from '../models/transaction';
 
 
 @Injectable({
@@ -20,6 +21,7 @@ export class RestApiService {
   private productImageURL = `${this.apiURL}/product/images`;
   private outOfStockURL = `${this.productURL}/count/out_of_stock`;
   private transactionURL = `${this.apiURL}/transaction`;
+  orderTransaction: Transaction;
 
   constructor(private http: HttpClient) { }
   login(data): Observable<Login> {
@@ -78,6 +80,10 @@ export class RestApiService {
     formData.append('stock', product.Stock.toString());
     formData.append('upload_file', product.Image);
     return formData;
+  }
+
+  addTransaction(transaction) {
+    return this.http.post(this.transactionURL, transaction);
   }
 
 }

@@ -60,9 +60,7 @@ namespace RestfulApi.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.OrderList)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.OrderList).IsUnicode(false);
 
                 entity.Property(e => e.PaymentDetail)
                     .HasMaxLength(50)

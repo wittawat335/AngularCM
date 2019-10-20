@@ -14,6 +14,7 @@ namespace RestfulApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly CMDBContext _context;
@@ -41,7 +42,6 @@ namespace RestfulApi.Controllers
 
         // GET: api/Product
         [HttpGet]
-        [Authorize]
         public IActionResult GetProducts()
         {
             try
@@ -57,7 +57,6 @@ namespace RestfulApi.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        [Authorize]
         public IActionResult GetProduct(int id)
         {
             try
