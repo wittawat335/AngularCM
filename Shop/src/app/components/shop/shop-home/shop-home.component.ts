@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import { ProductForm } from 'src/app/models/product-view-model';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-shop-home',
@@ -9,7 +10,7 @@ import { ProductForm } from 'src/app/models/product-view-model';
 })
 export class ShopHomeComponent implements OnInit {
 
-  constructor(private restService: RestApiService) { }
+  constructor(private restService: RestApiService, private orderService: OrderService) { }
 
   mProductArray = new Array<Product>();
   mOrderArray = new Array<ProductForm>();

@@ -21,6 +21,7 @@ export class RestApiService {
   private productImageURL = `${this.apiURL}/product/images`;
   private outOfStockURL = `${this.productURL}/count/out_of_stock`;
   private transactionURL = `${this.apiURL}/transaction`;
+  private userURL = `${this.apiURL}/user/GetUserByClaim`;
   orderTransaction: Transaction;
 
   constructor(private http: HttpClient) { }
@@ -37,6 +38,10 @@ export class RestApiService {
       localStorage.getItem(environment.keyLocalAuthenInfo)
     );
     return authenInfo != null;
+  }
+
+  getUser(){
+    return this.http.get<Login>(this.userURL);
   }
 
   getProducts(): Observable<ProductResponse> {

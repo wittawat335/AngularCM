@@ -1,3 +1,4 @@
+import { OrderComponent } from './components/order/order.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'stock/create', component: StockCreateComponent, canDeactivate: [CancelFormGuard] },
   { path: 'stock/:id', component: StockEditComponent, canDeactivate: [CancelFormGuard] },
   { path: 'shop', component: ShopHomeComponent,  canActivate: [AuthGuard] },
+  { path: 'order', component: OrderComponent,  canActivate: [AuthGuard] },
   // { path: 'transaction', component: TransactionHomeComponent, canActivate: [AuthenGuard] },
   // { path: 'transaction/detail/:id', component: TransactionDetailComponent },
   // { path: 'report', component: ReportComponent },

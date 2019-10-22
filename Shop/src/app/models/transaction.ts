@@ -1,3 +1,4 @@
+import { OrderItem } from './order-item';
 export class Transaction {
     total: number;
     paid: number;
@@ -6,5 +7,7 @@ export class Transaction {
     paymentDetail: string;
     sellerId: string;
     buyerId: string;
-    orderList: string;
+    orderItem: OrderItem[];
 }
+
+

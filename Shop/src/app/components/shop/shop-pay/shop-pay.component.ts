@@ -1,3 +1,4 @@
+import { ProductForm } from './../../../models/product-view-model';
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import Swal from 'sweetalert2';
@@ -11,7 +12,7 @@ import { Transaction } from 'src/app/models/transaction';
 export class ShopPayComponent implements OnInit {
 
   // tslint:disable-next-line:ban-types
-  @Input() orderPayment: String;
+  @Input() orderPayment: ProductForm[];
   @Input() totalPayment: number;
   @Output() paymentSccuess = new EventEmitter<void>();
   @Output() submitPayments = new EventEmitter<void>();
@@ -68,7 +69,8 @@ export class ShopPayComponent implements OnInit {
     transaction.paymentDetail = 'full';
     transaction.sellerId = 'sr0001';
     transaction.buyerId = 'by0000';
-    transaction.orderList = JSON.stringify(this.orderPayment);
+    // transaction.orderList = JSON.stringify(this.orderPayment);
+    transaction.orderItem = this.orderPayment;
 
     this.restService.addTransaction(transaction).subscribe(
       data => {
@@ -76,7 +78,7 @@ export class ShopPayComponent implements OnInit {
         Swal.fire({
           position: 'center',
           type: 'success',
-          //title: data.message,
+          title: 'Success',
           showConfirmButton: false,
           timer: 1500
         });

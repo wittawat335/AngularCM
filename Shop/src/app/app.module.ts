@@ -20,6 +20,7 @@ import { ShopPayComponent } from './components/shop/shop-pay/shop-pay.component'
 import { CustomPipe } from './pipe/custom.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
     ImagePipe,
     ShopHomeComponent,
     ShopPayComponent,
-    CustomPipe
+    CustomPipe,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

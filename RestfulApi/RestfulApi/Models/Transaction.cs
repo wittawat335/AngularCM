@@ -5,6 +5,11 @@ namespace RestfulApi.Models
 {
     public partial class Transaction
     {
+        public Transaction()
+        {
+            OrderItem = new HashSet<OrderItem>();
+        }
+
         public int TransactionId { get; set; }
         public int? Subtotal { get; set; }
         public int? Discount { get; set; }
@@ -21,5 +26,7 @@ namespace RestfulApi.Models
         public string BuyerId { get; set; }
         public string Comment { get; set; }
         public DateTime? Timestamp { get; set; }
+
+        public ICollection<OrderItem> OrderItem { get; set; }
     }
 }

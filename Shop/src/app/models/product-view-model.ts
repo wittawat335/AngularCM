@@ -6,5 +6,6 @@ export class ProductForm {
     Price: number;
     Qty: number;
     CreateDate: string;
+    TransactionId: number;
   }
 

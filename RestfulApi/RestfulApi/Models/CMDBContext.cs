@@ -15,6 +15,7 @@ namespace RestfulApi.Models
         {
         }
 
+        public virtual DbSet<OrderItem> OrderItem { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -30,6 +31,15 @@ namespace RestfulApi.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrderItem>(entity =>
+            {
+                entity.HasOne(d => d.Transaction)
+                    .WithMany(p => p.OrderItem)
+                    .HasForeignKey(d => d.TransactionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrderItem_Transaction");
+            });
+
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.ProductId);

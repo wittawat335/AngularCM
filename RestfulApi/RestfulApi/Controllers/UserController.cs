@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -6,11 +7,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Helpers;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using RestfulApi.Models;
@@ -35,6 +35,28 @@ namespace RestfulApi.Controllers
         public IEnumerable<Users> GetUsers()
         {
             return _context.Users;
+        }
+
+        [HttpGet]
+        [Route("GetUserByClaim")]
+        public async Task<IActionResult> GetUserByClaim()
+        {
+            try
+            {
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var handler = new JwtSecurityTokenHandler();
+                var tokenS = handler.ReadToken(accessToken) as JwtSecurityToken;
+
+                // key is case-sensitive
+                var userId = tokenS.Claims.First(claim => claim.Type == "id").Value;
+                var username = _context.Users.FirstOrDefault(x => x.Id == Convert.ToInt32(userId)).Username;
+
+                return Ok(new { result = username, message = "request successfully" });
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
         }
 
         // GET: api/User/5
@@ -186,7 +208,7 @@ namespace RestfulApi.Controllers
                 // new Claim(ClaimTypes.Role, user.Position)
             };
 
-            var expires = DateTime.Now.AddMinutes(Convert.ToDouble(_appSetting.ExpireDay));
+            var expires = DateTime.Now.AddDays(Convert.ToDouble(_appSetting.ExpireDay));
 
             //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSetting.JWT_Secret));

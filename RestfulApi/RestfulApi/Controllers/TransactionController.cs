@@ -23,10 +23,32 @@ namespace RestfulApi.Controllers
         }
 
         // GET: api/Transaction
+
         [HttpGet]
-        public IEnumerable<Transaction> GetTransaction()
+        public Object GetTransactions()
         {
-            return _context.Transaction;
+            try
+            {
+                var result = _context.Transaction.
+                FromSql("SELECT t.TransactionId, t.subtotal, t.discount, " +
+                "t.ShippingCost, t.[TaxPercent], t.total, t.[Paid], t.change," +
+                "t.orderList, t.[PaymentType], t.[PaymentDetail], t.[SellerId]," +
+                "t.[BuyerId], t.[Comment], t.[Timestamp], u.Username employeeid " +
+                "FROM [Transaction] t LEFT JOIN Users u ON t.employeeid = u.ID").ToList();
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, new { result = "", message = error });
+            }
         }
 
         // GET: api/Transaction/5
@@ -98,10 +120,16 @@ namespace RestfulApi.Controllers
                 //var position = tokenS.Claims.First(claim => claim.Type == "position").Value;
                 model.EmployeeId = userId;
 
-                _context.Add(model);
+                _context.Transaction.Add(model);
+
+                foreach (var m in model.OrderItem)
+                {
+                    _context.OrderItem.Add(m);
+                }
+
                 _context.SaveChanges();
 
-                return Ok(new { result = model, message = "create transaction successfully" });
+                return Ok();
             }
             catch (Exception error)
             {
