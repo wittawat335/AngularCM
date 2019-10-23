@@ -44,7 +44,7 @@
               <td>฿ {{item.Total}}</td>
               <td>{{item.Comment}} PCS.</td>
               <td>
-                <img src="assets/images/ic_detail_n.png" class="edit_product" (click)="onEditProduct(item.ProductId)">
+                <img src="assets/images/ic_detail_n.png" class="edit_product" (click)="AddOrEditOrderItem(item.TransactionId)">
                 <img src="assets/images/ic_edit.png" class="edit_product" (click)="onEditProduct(item.ProductId)">
                 <img src="assets/images/ic_delete.png" (click)="onDeleteProduct(item.ProductId)" class="delete_product">
               </td>

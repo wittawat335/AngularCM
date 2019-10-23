@@ -21,6 +21,8 @@ import { CustomPipe } from './pipe/custom.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { OrderComponent } from './components/order/order.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { MatDialogModule, MatDialogConfig } from '@angular/material/dialog'; // Dialog
 
 @NgModule({
   declarations: [
@@ -37,18 +39,21 @@ import { OrderComponent } from './components/order/order.component';
     ShopHomeComponent,
     ShopPayComponent,
     CustomPipe,
-    OrderComponent
+    OrderComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule, // dialog
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
       progressBar: true
     }) // ToastrModule added
   ],
+  entryComponents:[OrderListComponent],  // components ที่จะให้เป็น modal
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
